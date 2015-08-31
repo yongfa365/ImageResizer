@@ -8,14 +8,14 @@ namespace ImageResizer
 {
     public class Helper
     {
-        public static void Run(string oldFilePath, string newFilePath, int width, int height)
+        public static void Run(string oldFilePath, string newFilePath, int width, int height,int? quality)
         {
 
             if (!oldFilePath.EndsWith("gif", StringComparison.OrdinalIgnoreCase))
             {
                 using (var image = new MagickImage(oldFilePath))
                 {
-                    Process(width, height, image);
+                    Process(width, height, image, quality);
                     image.Write(newFilePath);
                 }
             }
@@ -26,15 +26,22 @@ namespace ImageResizer
 
                     foreach (var image in collection)
                     {
-                        Process(width, height, image);
+                        Process(width, height, image, quality);
                     }
                     collection.Write(newFilePath);
                 }
             }
         }
 
-        private static void Process(int width, int height, MagickImage image)
+        private static void Process(int width, int height, MagickImage image,int? quality)
         {
+            image.Strip();
+
+            if (quality.HasValue)
+            {
+                image.Quality = quality.Value;
+            }
+
             //模版的宽高比例
             var templateRate = (double)width / height;
 
