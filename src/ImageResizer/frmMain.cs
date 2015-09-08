@@ -49,7 +49,7 @@ namespace ImageResizer
 
                 //匹配以'\'开头的文件，文件名只能为guid并且是.jpg/.png/.gif/.jpen格式的文件
                 Files = lst
-                    .Where(p => Regex.IsMatch(p, @"\\[a-f0-9]{8}(-[a-f0-9]{4}){3}-[a-f0-9]{12}\.(jpg|png|gif|bmp|jpen)", RegexOptions.IgnoreCase))
+                    .Where(p => Regex.IsMatch(p, @"\\[a-f0-9]{8}(-[a-f0-9]{4}){3}-[a-f0-9]{12}\.(jpg|png|gif|bmp|jpeg)", RegexOptions.IgnoreCase))
                     .ToList();
             }
             else
