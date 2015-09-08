@@ -7,6 +7,7 @@ namespace ImageResizer
 {
    public class Rule
     {
+        public string Name { get; set; }
         public int Width { get; set; }
         public int Height { get; set; }
         public string FileNameRule { get; set; }
