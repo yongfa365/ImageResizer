@@ -25,6 +25,10 @@
 - 是否改变质量，质量不变或者设置的质量。
 - gif转换。
   
+
+ImageMagick如果放以web上，可能要安装：
+http://download.microsoft.com/download/1/6/B/16B06F60-3B20-4FF2-B699-5E9B7962F9AE/VSU_4/vcredist_x64.exe
+否则会报：Could not load file or assembly 'Magick.NET-Q16.Wrapper-x64.dll' or one of its dependencies
 ## Step 3. 转换
 - 有问题时是停止还是仅记录。
 - 显示总共要处理的数量。
