@@ -8,7 +8,7 @@ namespace ImageResizer
 {
     public class Helper
     {
-        public static void Run(string oldFilePath, string newFilePath, int width, int height,int? quality)
+        public static void Run(string oldFilePath, string newFilePath, int width, int height, int? quality)
         {
 
             if (!oldFilePath.EndsWith("gif", StringComparison.OrdinalIgnoreCase))
@@ -33,7 +33,7 @@ namespace ImageResizer
             }
         }
 
-        private static void Process(int width, int height, MagickImage image,int? quality)
+        private static void Process(int width, int height, MagickImage image, int? quality)
         {
             image.Strip();
 
@@ -54,13 +54,13 @@ namespace ImageResizer
                 // Resize each image in the collection to a width of 200. When zero is specified for the height
                 // the height will be calculated with the aspect ratio.
                 image.Resize(0, height);
-                image.ChopHorizontal(width, int.MaxValue);
+                image.ChopHorizontal(width, image.Width - width);
             }
             else
             {
                 //以宽为准缩放
                 image.Resize(width, 0);
-                image.ChopVertical(height, int.MaxValue);
+                image.ChopVertical(height, image.Height - height);
             }
         }
     }
